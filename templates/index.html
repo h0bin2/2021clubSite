@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>PERCEPTRON</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		
+		<script type="text/javascript" src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+	    <script type="text/javascript" src="{{url_for('static', filename='js/skel.min.js')}}"></script>
+	    <script type="text/javascript" src="{{url_for('static', filename='js/skel-layers.min.js')}}"></script>
+	    <script type="text/javascript" src="{{url_for('static', filename='js/init.js')}}"></script>
+	    <link href="{{url_for('static', filename='css/skel.css')}}" rel="stylesheet">
+	    <link href="{{url_for('static', filename='css/main.css')}}" rel="stylesheet">
+	    <link href="{{url_for('static', filename='css/style-xlarge.css')}}" rel="stylesheet">
+	</head>
+	<body id="top">
+
+		<!-- Header -->
+			<header id="header" class="skel-layers-fixed">
+				<h1><a onclick="window.location.href='/main'">PERCEPTRON</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a onclick="window.location.href='/main'">Home</a></li>
+						<li><a onclick="window.location.href='/notice/0'">Notice</a></li>
+						<li><a href="/project">Project</a></li>
+						<li><a href="/board/0">Board</a></li>
+						{% if session['logFlag'] == True %}
+							<li><a href="/profile">Profile</a></li>
+							<li><a href="/logout" class="button special">Logout</a></li>
+						{% else %}
+							<li><a href="/login" class="button special">login</a></li>
+						{% endif %}
+					</ul>				
+				</nav>
+			</header>
+
+			<section id="banner">
+		        <div class="inner">
+		          <h2>perceptron</h2>
+		          <p>가톨릭관동대학교 소프트웨어학과 동아리</p>
+		          {% if session['logFlag'] in (None, False) %}
+		          <ul class="actions">
+		            <li><a href="/login" class="button big special">로그인</a></li>
+		          </ul>
+		          {% endif %}
+		        </div>
+		      </section>
+
+		    <!-- One -->
+		      <section id="one" class="wrapper style1">
+		        <header class="major">
+		          <h2>이달의 우수동아리원!!</h2>
+
+		        </header>
+		        <div class="container">
+		          <div class="row">
+		            <div class="4u">
+		              <section class="special box">
+		                <a class="circle img"><img  src="{{ url_for('static', filename='images/pic06.jpg') }}" /></a>
+		                <h2><strong>동아리</strong></h2>
+		                <ul>
+		                  <li>알고리즘 부문</li>
+		                  <li>이달의 우수동아리원</li>
+		                </ul>
+		                <p><a href="#" class="button big alt">프로필</a></p>
+		              </section>
+		            </div>
+		            <div class="4u">
+		              <section class="special box">
+		                <a class="circle img"><img  src="{{ url_for('static', filename='images/pic06.jpg') }}" /></a>
+		                <h2><strong>동아리</strong></h2>
+		                <ul>
+		                  <li>실습 부문</li>
+		                  <li>이달의 우수동아리원</li>
+		                </ul>
+		                <p><a href="#" class="button big alt">프로필</a></p>
+		              </section>
+		            </div>
+		            <div class="4u">
+		              <section class="special box">
+		               <a class="circle img"><img  src="{{ url_for('static', filename='images/pic06.jpg') }}" /></a>
+		                <h2><strong>동아리</strong></h2>
+		                <ul>
+		                  <li>정보 공유 부문</li>
+		                  <li>이달의 우수동아리원</li>
+		                </ul>
+		                <p><a href="#" class="button big alt">프로필</a></p>
+		              </section>
+		            </div>
+		          </div>
+		        </div>
+		      </section>
+		      
+		    <!-- Two -->
+		      <section id="two" class="wrapper style2">
+		        <div class="container">
+		          <div class="row">
+		            <div class="5u">
+		              <section class="st">
+		                <h3>동아리 소개</h3>
+		                <p>가톨릭관동대학교 소프트웨어학과 동아리입니다. <br>인공지능을 주제로 활동하고 빅데이터 분석, 머신러닝, 딥러닝을 활용한 예측, 분류 프로젝트를 진행합니다. <br>매주 알고리즘 문제 풀이와 개인마다 다른 과제를 진행하고 발표하여 공유합니다.</p>
+		                <ul class="actions">
+		                  <li><a href="https://www.notion.so/PERCEPTRON-STUDY-ROOM-6c499d8372074ab5b5efdffab4d5499b" class="button alt" target="_blank">동아리 Nothion</a></li>
+		                </ul>
+		              </section>
+		            </div>
+		            <div class="6u">
+		          <section>
+		              <div class="slidebox">
+		            <input type="radio" name="slide" id="slide01" checked>
+		            <input type="radio" name="slide" id="slide02">
+		            <input type="radio" name="slide" id="slide03">
+		            <input type="radio" name="slide" id="slide04">
+		            <ul class="slidelist">
+		              <li class="slideitem">
+		                <div>
+		                  <label for="slide04" class="left"></label>
+		                  <label for="slide02" class="right"></label>
+		                  <a><img src="{{ url_for('static', filename='images/gong01.jpg') }}" /></a>
+		                </div>
+		              </li>
+		              <li class="slideitem">
+		                <div>
+		                  <label for="slide01" class="left"></label>
+		                  <label for="slide03" class="right"></label>
+		                  <a><img src="{{ url_for('static', filename='images/gong02.jpg') }}" /></a>
+		                </div>
+		              </li>
+		              <li class="slideitem">
+		                <div>
+		                  <label for="slide02" class="left"></label>
+		                  <label for="slide04" class="right"></label>
+		                  <a><img src="{{ url_for('static', filename='images/gong03.jpg') }}" /></a>
+		                </div>
+		              </li>
+		              <li class="slideitem">
+		                <div>
+		                  <label for="slide03" class="left"></label>
+		                  <label for="slide01" class="right"></label>
+		                  <a><img src="{{ url_for('static', filename='images/gong04.jpg') }}" /></a>
+		                </div>
+		              </li>
+		            </ul>
+		            <ul class="paginglist">
+		              <li>
+		                <label for="slide01"></label>
+		              </li>
+		              <li>
+		                <label for="slide02"></label>
+		              </li>
+		              <li>
+		                <label for="slide03"></label>
+		              </li>
+		              <li>
+		                <label for="slide04"></label>
+		              </li>
+		            </ul>             
+		          </div>
+		        </section>
+		            </div>
+		            </div>
+		        </div>
+		      </section>
+	
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row double">
+						<div class="6u">
+							<h3>Contact </h3>
+							<p>PERCEPTRON (가톨릭관동대학교, 소프트웨어학과 인공지능 동아리)<br>
+								동아리장 > lucky3270@naver.com (가입, 관련 문의)</p>
+						</div>
+					</div>
+					<ul class="copyright">
+						<p>Copyright © PERCEPTRON. All rights reserved. </p>
+					</ul>
+				</div>
+			</footer>
+
+	</body>
+</html>

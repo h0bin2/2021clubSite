@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>PERCEPTRON</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/skel-layers.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/init.js') }}"></script>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/skel.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-xlarge.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/projectstyle.css') }}"/>
+	</head>
+	<body id="top">
+
+		<!-- Header -->
+			<header id="header" class="skel-layers-fixed">
+				<h1><a onclick="window.location.href='/main'">PERCEPTRON</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a onclick="window.location.href='/main'">Home</a></li>
+						<li><a onclick="window.location.href='/notice/0'">Notice</a></li>
+						<li><a href="/project">Project</a></li>
+						<li><a href="/board/0">Board</a></li>
+						{% if session['logFlag'] == True %}
+							<li><a href="/profile">Profile</a></li>
+							<li><a href="/logout" class="button special">Logout</a></li>
+						{% else %}
+							<li><a href="/login" class="button special">login</a></li>
+						{% endif %}
+					</ul>				
+				</nav>
+			</header>
+
+			<section id="main" class="wrapper style1">
+				<header class="major">
+					<h2>Project</h2>
+					<p>퍼셉트론 프로젝트 게시판</p>
+				</header>
+				<div class="container">
+					<hr class="major"/>
+					<div class="projectlist">
+						<ul>
+							<li>
+								<a href="#" target="_blank">
+									<div class="screen">
+										<div class="top">딥러닝</div>
+										<div class="bottom">퍼셉트론 동아리</div>
+										<img src="{{ url_for('static', filename='images/dl.jpg') }}" alt="">
+									</div>
+									<div>
+										<h3>딥러닝</h3>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#" target="_blank">
+									<div class="screen">
+										<div class="top">데이터 분석</div>
+										<div class="bottom">퍼셉트론 동아리</div>
+										<img src="{{ url_for('static', filename='images/data02.png') }}" alt="">
+									</div>
+									<div>
+										<h3>데이터 분석</h3>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			
+			
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row double">
+						<div class="6u">
+							<h3>Contact </h3>
+							<p>PERCEPTRON (가톨릭관동대학교, 소프트웨어학과 인공지능 동아리)<br>
+								동아리장 > lucky3270@naver.com (가입, 관련 문의)</p>
+						</div>
+					</div>
+					<ul class="copyright">
+						<p>Copyright © PERCEPTRON. All rights reserved. </p>
+					</ul>
+				</div>
+			</footer>
+
+	</body>
+</html>

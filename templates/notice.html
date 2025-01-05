@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>PERCEPTRON</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/skel-layers.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/init.js') }}"></script>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-xlarge.css') }}" />
+	</head>
+	<body id="top">
+		<!-- Header -->
+			<header id="header" class="skel-layers-fixed">
+				<h1><a onclick="window.location.href='/main'">PERCEPTRON</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a onclick="window.location.href='/main'">Home</a></li>
+						<li><a onclick="window.location.href='/notice/0'">Notice</a></li>
+						<li><a href="/project">Project</a></li>
+						<li><a href="/board/0">Board</a></li>
+						{% if session['logFlag'] == True %}
+							<li><a href="/profile">Profile</a></li>
+							<li><a href="/logout" class="button special">Logout</a></li>
+						{% else %}
+							<li><a href="/login" class="button special">login</a></li>
+						{% endif %}
+					</ul>				
+				</nav>
+			</header>
+
+			<section id="main" class="wrapper style1">
+				<header class="major">
+					<h2>Notice</h2>
+					<p>퍼셉트론 공지 게시판</p>
+				</header>
+				<div class="container">
+					<hr class="major" />
+					<div class="row">
+						<div class="6u">
+							<section class="special">
+								<a href="#" class="image fit"><img src="{{ url_for('static', filename='images/algorithm.jpg') }}" alt="" /></a>
+								<h3>Every Week Mission</h3>
+								<p>백준 / 프로그래머스<br>
+									코딩 테스트 문제, 알고리즘 문제를 매주 N 문제 풀이
+								</p>
+								<ul class="actions">
+									<li><a href="https://www.acmicpc.net/" class="button alt">BACK JOON</a></li>
+									<li><a href="https://school.programmers.co.kr/learn/challenges?order=recent&page=1" class="button alt">PROGRAMMERS</a></li>
+								</ul>
+							</section>
+						</div>
+						<div class="6u">
+							<section class="special">
+								<a href="#" class="image fit"><img src="{{ url_for('static', filename='images/data.jpg') }}" alt="" /></a>
+								<h3>This Week Mission</h3>
+								<p>매 주차 미션 풀이<br>
+								매주 각 분야별 문제를 해결하고 토론하는 시간을 가진다.</p>
+								<ul class="actions">
+									<li><a href="#" class="button alt">MISSION</a></li>
+								</ul>
+							</section>
+						</div>
+					</div>
+					<hr class='board_hr'/>
+					<div class = "week">
+					    <div class ="list">
+					      <table class ="table ttodo-list">
+					        <thead>
+					          <th>Monday</th>
+					          <th>Tuesday</th>
+					          <th>Wednesday</th>
+					          <th>Thursday</th>
+					          <th>Friday</th>
+					          <th class ="text-primary">Saturday</th>
+					          <th class ="text-danger">Sunday</th>
+					        <tr class="todo">
+					          <td>
+					          	<ul class="actions">
+									<li><a href="#" class="button alt">OFF</a></li>
+								</ul>
+					          </td> <!---->
+					          <td><ul class="actions">
+									<li><a href="#" class="button on">ON</a></li>
+								</ul></td> <!---->
+					          <td><ul class="actions">
+									<li><a href="#" class="button alt">OFF</a></li>
+								</ul></td> <!---->
+					          <td><ul class="actions">
+									<li><a href="#" class="button alt">OFF</a></li>
+								</ul></td> <!---->
+					          <td><ul class="actions">
+									<li><a href="#" class="button on">ON</a></li>
+								</ul></td> <!---->
+					          <td><ul class="actions">
+									<li><a href="#" class="button alt">OFF</a></li>
+								</ul></td> <!---->
+					          <td><ul class="actions">
+									<li><a href="#" class="button alt">OFF</a></li>
+								</ul></td> <!---->
+					        </tr>
+					      </table>
+					    </div>
+					</div>
+					<!--게시판-->
+					<div class="board_list_wrap">
+						<!-- 추가한 코드 -->
+			            <div class="paging1">
+			                <form class="board_head" method="POST" action="/notice/0">
+			                	<span class="paging2">
+			                    <button class="dropbtn" type="button">말머리</button>
+			                        <div class="dropdown-content">
+			                            <button type="submit" name='bt' value='all'>전체보기</button>
+			                            <button type="submit" name='bt' value='공지'>공지</button>
+			                            <button type="submit" name='bt' value='일정'>일정</button>
+			                        </div>
+			                	</span>
+				                <button type="submit" class="bt3" name='bt' value='write'>글쓰기</button>
+			                </form>
+			            </div>
+			            <table class="board_list">
+			                <caption>게시판 목록</caption>
+			                <thead>
+			                    <tr>
+			                        <th class="board_else">번호</th>
+			                        <th class="board_else">말머리</th>
+			                        <th class="board_title" style = "width: 25em;">제목</th>
+			                        <th class="board_else">글쓴이</th>
+			                        <th class="board_else">작성일</th>
+			                        <th class="board_else">조회</th>
+			                        <th class="board_else">좋아요</th>
+			                    </tr>
+			                </thead>
+			                <tbody>
+			                    {% for b in board %}
+								<tr>
+									<td>{{ b['BOARDID'] }}</td>
+									<td>{{ b['HEAD'] }}</td>
+									<td><a href="/content/{{b['BOARDID']}}">{{ b['TITLE'] }}</a></td>
+									<td>{{ b['NAME'] }}</td>
+									<td>{{ b['DATE(REGDATE)'] }}</td>
+									<td>{{ b['VIEWCNT'] }}</td>
+									<td>{{ b['LIKES'] }}</td>
+								</tr>
+								{% endfor %}
+			                </tbody>
+			            </table>
+			            <div class="paging">
+			                <a onclick="window.location.href='/notice/0'" class="bt">첫 페이지</a>
+			                {% if board_cnt != 0 %}
+			                	<a onclick="window.location.href='/notice/{{board_cnt - 1}}'" class="bt">이전 페이지</a>
+			                {% endif %}
+			                {% for p in pagecnt %}
+				                {% if p == page %}
+				                	<a onclick="window.location.href='/notice/{{p}}'" class="num on">{{p+1}}</a>
+				                {% else %}
+				                	<a onclick="window.location.href='/notice/{{p}}'" class="num">{{p+1}}</a>
+				                {% endif %}
+				            {% endfor %}
+				            {% if page != board_cnt - 1 %}
+			                	<a onclick="window.location.href='/notice/{{page + 1}}'" class="bt">다음 페이지</a>
+			                {% endif %}
+			                <a onclick="window.location.href='/notice/{{board_cnt - 1}}'" class="bt">마지막 페이지</a>
+			            </div>
+			        </div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row double">
+						<div class="6u">
+							<h3>Contact </h3>
+							<p>PERCEPTRON (가톨릭관동대학교, 소프트웨어학과 인공지능 동아리)<br>
+								동아리장 > lucky3270@naver.com (가입, 관련 문의)</p>
+						</div>
+					</div>
+					<ul class="copyright">
+						<p>Copyright © PERCEPTRON. All rights reserved. </p>
+					</ul>
+				</div>
+			</footer>
+	</body>
+</html>

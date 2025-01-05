@@ -1,0 +1,109 @@
+.maindiv {
+    display: flex;
+    width: 30%;
+    height: 150px;
+    background-color: #629DD1;
+    margin: 100px auto;
+    border-radius: 25px;
+}
+.main {
+    margin: auto;
+    font-size: 40px;
+    color: black;
+    font-weight: 500;
+}
+
+.projectlist {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.projectlist > ul {
+    font-size: 0;
+}
+
+.projectlist > ul > li
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+.projectlist > ul > li > a {
+    display: block;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.projectlist > ul > li > a .screen {
+    position: relative;
+    overflow: hidden;
+}
+
+.projectlist > ul > li > a .screen .top {
+    position: absolute;
+    bottom: 150%;
+    left: 30px;
+    z-index: 2;
+    color: white;
+    font-size: 35px;
+    font-weight: 1000;
+    transition: all .35s;
+}
+
+.projectlist > ul > li > a .screen .bottom {
+    position: absolute;
+    top: 150%;
+    left: 3em;
+    z-index: 2;
+    color: white;
+    font-size: 15px;
+    transition: all .35s;
+}
+
+.projectlist > ul > li > a .screen img {
+    width: 100%;
+    height: 320px;
+}
+
+.projectlist > ul > li > a h3 {
+    font-size: 16px;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.projectlist > ul > li > a:hover .top {
+    bottom: 52%;
+}
+
+.projectlist > ul > li > a:hover .bottom {
+    top: 52%;
+}
+
+.projectlist > ul > li > a .screen::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95%;
+    background: rgba(0,0,0,.5);
+    z-index: 1;
+    opacity: 0;
+    transition: all .35s;
+}
+
+.projectlist > ul > li > a:hover .screen::after{
+    opacity: 1;
+}
+
+h3 {
+        font-size: 1.25em;
+        line-height: 1.5em;
+        margin-bottom: 20px;
+    }
